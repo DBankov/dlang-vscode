@@ -86,7 +86,7 @@ export default class Server {
     private importPackages(selections) {
         return Server.dub.list().then((packages) => {
             return new Promise((resolve) => {
-                cp.spawn('dcd-client', ['--clearCache']).on('exit', () => {
+                cp.spawn(path.join(Server.path, 'dcd-client'), ['--clearCache']).on('exit', () => {
                     let clients: cp.ChildProcess[] = [];
 
                     for (let selection in selections) {
